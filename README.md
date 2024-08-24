@@ -93,6 +93,3 @@ python -m unittest test_hsuBug.py
 ## 許可證
 
 [MIT](https://choosealicense.com/licenses/mit/)
-```
-
-這個擴展版本的 README.md 包含了安裝指南和幾個主要功能的使用示例。它提供了清晰的步驟來安裝套件，並展示了如何使用主要的功能。您可以根據需要進一步調整或添加更多示例。
