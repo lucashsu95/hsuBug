@@ -1,6 +1,6 @@
 import unittest
-from bug import Bug
-from functions import checkLink, getEnv
+from hsuBug.bug import Bug
+from hsuBug.functions import checkLink, getEnv
 import os
 
 class TestLucashsu(unittest.TestCase):

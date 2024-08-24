@@ -86,6 +86,13 @@ else:
 python -m unittest test_hsuBug.py
 ```
 
+## 發布
+
+```shell
+python setup.py sdist
+twine upload dist/*
+```
+
 ## 未來功能
 
 1. aiohttp 版本
