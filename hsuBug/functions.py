@@ -4,18 +4,12 @@ import pandas as pd
 from typing import Optional
 import requests
 from bs4 import BeautifulSoup
-from tqdm import trange
 
-def downloadByExcel(json_data: dict) -> Optional[pd.DataFrame]:
-    try:
-        df: pd.DataFrame = pd.DataFrame(json_data)
-        df.to_excel('output.xlsx', index=False)
-        return df
-    except Exception as e:
-        return None
-    
+
+# check
 def checkByHref(a_tag: BeautifulSoup) -> bool:
-    return a_tag.has_attr('href')
+    return a_tag.has_attr("href")
+
 
 def checkLink(link: str) -> bool:
     try:
@@ -24,39 +18,45 @@ def checkLink(link: str) -> bool:
     except requests.RequestException:
         return False
 
+
+# create
 def createFolder(folder_name: str) -> None:
     if not os.path.exists(folder_name):
         os.makedirs(folder_name)
 
+
+# get
 def getEnv(key: str) -> Optional[str]:
     value: Optional[str] = os.getenv(key)
     if value is None:
-        raise Exception(f'{key} 環境變數不存在')
+        raise Exception(f"{key} 環境變數不存在")
     return value
 
-def downloadByLinks(a_tags: list, subpage_url: str) -> Optional[str]:
-    for i in trange(len(a_tags)):
-        a_tag = a_tags[i]
-        if a_tag and a_tag.get('href'):
-            a_url = a_tag.get('href').replace('../', '')
-            filename = a_tag.get('title')
-            downloaded_file = downloadFile(a_url,filename)
-            return downloaded_file
-        else:
-            return None
-                    
+
+# download
+
+
 def downloadFile(a_tag_href: str, local_filename: str) -> Optional[str]:
     sleep(3)
-    createFolder('download_files')
-    print(f'下載中: {local_filename}')
+    createFolder("download_files")
+    print(f"下載中: {local_filename}")
 
     with requests.get(a_tag_href, stream=True) as r:
         r.raise_for_status()
         try:
-            with open(os.path.join('download_files', local_filename), 'wb') as f:
+            with open(os.path.join("download_files", local_filename), "wb") as f:
                 for chunk in r.iter_content(chunk_size=8192):
                     if chunk:
                         f.write(chunk)
         except Exception as e:
             print(f"下載失敗: {e} by {local_filename}")
     return local_filename
+
+
+def downloadByExcel(json_data: dict) -> Optional[pd.DataFrame]:
+    try:
+        df: pd.DataFrame = pd.DataFrame(json_data)
+        df.to_excel("output.xlsx", index=False)
+        return df
+    except Exception as e:
+        return None

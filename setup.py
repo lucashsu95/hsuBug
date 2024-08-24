@@ -10,7 +10,7 @@ URL = "https://github.com/lucashsu95/hsuBug"
 DOWNLOAD_URL = "https://pypi.org/project/hsuBug/"
  
 LICENSE = "MIT"
-VERSION = "0.1.1"
+VERSION = "0.1.2"
 DESCRIPTION = "BeautifulSoup + requests + tqdm + pandas的一個庫"
 LONG_DESCRIPTION = (HERE / "README.md").read_text(encoding="utf8")
 LONG_DESC_TYPE = "text/markdown"

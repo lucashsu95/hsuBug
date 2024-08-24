@@ -1,2 +1,2 @@
 from .bug import Bug
-from .functions import downloadByExcel, checkByHref, checkLink, createFolder, getEnv, downloadByLinks, downloadFile
+from .functions import downloadByExcel, checkByHref, checkLink, createFolder, getEnv, downloadFile
